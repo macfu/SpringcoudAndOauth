@@ -12,7 +12,7 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableEurekaClient
-@EnableFeignClients(basePackages = {"com.macfu.microcloud.service"})
+@EnableFeignClients(basePackages = {"com.macfu.microcloud"})
 public class Consumer_80_StarterSpringCloudApplication {
     public static void main(String[] args) {
         SpringApplication.run(Consumer_80_StarterSpringCloudApplication.class, args);
