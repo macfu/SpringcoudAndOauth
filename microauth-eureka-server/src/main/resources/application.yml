@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: microcloud-eureka-server
+server:
+  port: 7001
+security:
+  basic:
+    enabled: true # 启用安全认证处理
+  user:
+    name: edmin
+    password: mldnjava
+eureka:
+  client:
+    register-with-eureka: false   # 当前的微服务不注册到eureka中
+    fetch-registry: false         # 不通过eureka获取注册信息
+    service-url:  # 客户端进行eureka注册的配置
+      defaultZone: http://edmin:mldnjava@eurek-7001.com:7001/eureka
+  instance:
+    hostname: eureak-7001.com     # 定义eureka实现所在的主机名称
