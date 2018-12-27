@@ -15,12 +15,15 @@ public class DefaultAuthorizationServerConfig extends AuthorizationServerConfigu
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
                 // client_id信息
-                .withClient("cmacfu")
+                .withClient("cmldn")
                 // client_secret信息
                 .secret("cjava")
                 // 定义授权类型
                 .authorizedGrantTypes("authorization_code")
+                // 直接进行授权控制
+                .autoApprove(true)
                 // 授权范围
                 .scopes("webapp");
     }
+//    {"access_token":"185b8ce6-2078-4cf9-b84a-ab45e503be7d","token_type":"bearer","expires_in":43199,"scope":"webapp"}
 }
