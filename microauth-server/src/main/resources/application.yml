@@ -1,13 +1,9 @@
 server:
   port: 8080
 security:
-  basic:
-    enabled: true
-  user:
-    name: mldn
-    password: java
-    role:
-    - USER
+  oauth2:
+    resource:
+      filter-order: 3   # 对于Resource的过滤执行流程定义顺序
 spring:
   application:
     name: microauth-server
@@ -21,7 +17,18 @@ spring:
       min-idle: 5                                   # 数据库连接池的最小维持连接数
       initial-size: 5                               # 初始化提供的连接数
       max-total: 5                                  # 最大的连接数
-      max-wait-millis: 200                          # 等待连接获取的最大超时时间
+      max-wait-millis: 200                           # 等待连接获取的最大超时时间
+  redis:
+    host: 45.78.12.29
+    port: 6379
+    password: macfu
+    timeout: 1000
+    database: 0
+    pool:
+      max-active: 10
+      max-idle: 8
+      min-idle: 2
+      max-wait: 100
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml    # mybatis配置文件所在路径
   type-aliases-package: com.macfu.microauth.po            # 定义所有操作类的别名所在包

@@ -2,8 +2,13 @@ package com.macfu.microcloud.config;
 
 import com.macfu.microcloud.security.util.DefaultClientDetailsService;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
+import javax.annotation.Resource;
 
 /**
  * @Author: liming
@@ -12,6 +17,15 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
  */
 @Configuration
 public class DefaultAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+    @Resource
+    private RedisConnectionFactory redisConnectionFactory;
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        // 建议一个token存储的配置项，此时将token直接保存在redis之中
+        endpoints.tokenStore(new RedisTokenStore(this.redisConnectionFactory));
+    }
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 //        clients.inMemory()
