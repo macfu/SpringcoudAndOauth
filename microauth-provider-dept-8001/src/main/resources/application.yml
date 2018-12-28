@@ -32,3 +32,9 @@ spring:
       max-wait-millis: 2000   # 等待连接获取时间超时时间
   application:
     name: microcloud-provider-dept
+security:
+  oauth2:
+    resource:
+      id: dept-service
+      user-info-uri: http://localhost:8080/user
+      prefer-token-info: false  # 必须在有token存在的情况下才可以获得资源项

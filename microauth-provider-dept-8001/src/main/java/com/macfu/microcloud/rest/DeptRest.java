@@ -3,6 +3,7 @@ package com.macfu.microcloud.rest;
 import com.macfu.microcloud.service.IDeptService;
 import com.macfu.po.Dept;
 import com.netflix.discovery.DiscoveryClient;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +47,7 @@ public class DeptRest {
     }
 
     @GetMapping("/dept/list")
+    @PreAuthorize("hasAuthority('ADMIM')")
     public Object list() {
         return this.deptService.list();
     }

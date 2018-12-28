@@ -18,6 +18,7 @@
     </modules>
 
     <properties>
+        <feign-httpclient.version>8.18.0</feign-httpclient.version>
         <microauth.version>0.0.1</microauth.version>
         <junit.version>4.12</junit.version>
         <spring-boot-dependencies.version>1.5.9.RELEASE</spring-boot-dependencies.version>
@@ -28,7 +29,12 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.mldn</groupId>
+                <groupId>com.netflix.feign</groupId>
+                <artifactId>feign-httpclient</artifactId>
+                <version>${feign-httpclient.version}}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.macfu</groupId>
                 <artifactId>microauth-api</artifactId>
                 <version>${microauth.version}</version>
             </dependency>
