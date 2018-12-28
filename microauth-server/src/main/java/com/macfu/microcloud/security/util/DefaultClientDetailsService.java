@@ -28,6 +28,7 @@ public class DefaultClientDetailsService implements ClientDetailsService {
 
     @Override
     public ClientDetails loadClientByClientId(String clientId) throws ClientRegistrationException {
+        // 修改此模式后如果使用数据库中没有保存的clientid则会出现认证错误
         Map<String, Object> map = this.clientService.get(clientId);
         if (map.get("client") == null) {
             throw new ClientRegistrationException("客户" + clientId + "的信息不存在，无法进行OAuth认证处理");
